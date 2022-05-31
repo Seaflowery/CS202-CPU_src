@@ -196,7 +196,8 @@ MemOrIO MemOrIO_1(
     .write_data(write_data),
     .SwitchCtrl(SwitchCtrl),
     .LEDCtrl(LEDCtrl),
-    .TubeCtrl(TubeCtrl)
+    .TubeCtrl(TubeCtrl),
+    .addr_op(address[0])
 );
 
 Switch switch (
