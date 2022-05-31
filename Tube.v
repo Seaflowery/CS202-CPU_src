@@ -37,22 +37,20 @@ module Tube(
     reg [13:0]ct=0;
     reg [1:0]v=0;
     reg [15:0]w_data=0;
-    always @(posedge clk)begin
-        if (op & (!rst)) begin
-            w_data<=data;
-        end
-    end
-    always @(posedge clk)begin
+    always @(negedge clk)begin
         if (rst)begin
             ct<=0;
             w_data = 0;
         end 
-        else if (ct==0)begin 
-            clk_<=~clk_;
-            ct<=ct+1;
-        end
         else begin
-            ct<=ct+1;
+            if (op)w_data<=data;
+            if (ct==0)begin 
+                clk_<=~clk_;
+                ct<=ct+1;
+            end
+            else begin
+                ct<=ct+1;
+            end
         end
     end
     
