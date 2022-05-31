@@ -25,7 +25,7 @@ module Ifetc32(Instruction, branch_base_addr, link_addr, clock, reset, Addr_resu
     input[31:0] upg_dat_i; // UPG write data
     input upg_done_i; // 1 if program finished
 
-    reg[31:0] PC, Next_PC;  
+    reg[31:0] PC=0, Next_PC=0;  
 
     assign branch_base_addr = PC + 4;
 

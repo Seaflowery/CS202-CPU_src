@@ -35,8 +35,8 @@ module decode32(read_data_1,read_data_2,Instruction,mem_data,ALU_result,
     input[31:0]  opcplus4;                 // ����ȡָ��Ԫ��JAL����
 
     reg[31:0] r[0:31];
-    reg[4:0]  wreg;
-    reg[31:0] wdata;
+    reg[4:0]  wreg=0;
+    reg[31:0] wdata=0;
     
     wire[4:0] rreg_1;       //ins[25:21]
     wire[4:0] rreg_2;       //ins[20:16]

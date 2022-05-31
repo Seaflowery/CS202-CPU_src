@@ -46,8 +46,8 @@ module executs32(Read_data_1,Read_data_2,Sign_extend,Function_opcode,Exe_opcode,
     wire[5:0] Exe_code; // use to generate ALU_ctrl. (I_format==0) ? Function_opcode : { 3'b000 , Opcode[2:0] };
     wire[2:0] ALU_ctl; // the control signals which affact operation in ALU directely
     wire[2:0] Sftm; // identify the types of shift instruction, equals to Function_opcode[2:0]
-    reg[31:0] Shift_Result; // the result of shift operation
-    reg[31:0] ALU_output_mux; // the result of arithmetic or logic calculation
+    reg[31:0] Shift_Result=0; // the result of shift operation
+    reg[31:0] ALU_output_mux=0; // the result of arithmetic or logic calculation
     wire[32:0] Branch_Addr; // the calculated address of the instruction, Addr_Result is Branch_Addr[31:0]
     
     assign Ainput = Read_data_1;
@@ -57,7 +57,7 @@ module executs32(Read_data_1,Read_data_2,Sign_extend,Function_opcode,Exe_opcode,
     assign ALU_ctl[1] = ((~Exe_code[2]) | (~ALUOp[1]));
     assign ALU_ctl[2] = ((Exe_code[1] & ALUOp[1]) | ALUOp[0]);
     
-    reg[31:0] ALU_output;
+    reg[31:0] ALU_output=0;
     assign ALU_Result = ALU_output;
     always @*
     begin
